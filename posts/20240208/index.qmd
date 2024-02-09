@@ -1,0 +1,191 @@
+---
+title: Obxectivo
+jupyter: python3
+---
+
+
+Escribir un programa, simular o **ciclo Rankine** calculando e trazando os puntos correspondentes aos puntos do estado e unindo a fenda entre eles, e identificalos como procesos tanto no gráfico **T-S** como no **H-S**, xunto co cálculo do traballo neto e a relación de potencia de retorno.
+
+## Introdución
+
+O [ciclo Rankine](https://gl.wikipedia.org/wiki/Ciclo_de_Rankine) é un ciclo termodinámico. Serve de modelo para a obtención de traballo nunha turbina de vapor. Debe o seu nome ó matemático escocés [William John Macquorn Rankine](https://gl.wikipedia.org/wiki/William_John_Macquorn_Rankine).
+
+
+O **ciclo Rankine** é un ciclo enerxético de vapor que se usa nas centrais térmicas. É semellante ao [ciclo de Carnot](https://gl.wikipedia.org/wiki/Ciclo_de_Carnot). O seu uso é máis popular porque é moito máis práctico que o **ciclo de Carnot**, con boas taxas de eficiencia. Tamén ten deseños que melloran a eficiencia de moitos xeitos, como a **rexeración** e o **requecemento**. Isto fai que o **ciclo de Rankine** sexa un ciclo ideal para as turbinas de vapor.
+
+<center><img src= "https://upload.wikimedia.org/wikipedia/commons/b/be/Rankine_cycle_Ts.png" alt="drawing" style="width:400px;"/></center>
+
+<center><small>Diagrama T-S exhibindo do proceso real e do ideal.</small></center>
+  
+    
+## Procesos dun ciclo Rankine
+
+Hai catro procesos no ciclo Rankine. Os estados identifícanse mediante números (en marrón) no diagrama T–s.
+
+**Proceso 1-2: o fluído de traballo é bombeado de baixa a alta presión. Como o fluído é un líquido nesta fase, a bomba require pouca enerxía de entrada. O proceso 1-2 é a compresión isentrópica.
+Proceso 2-3: o líquido de alta presión entra nunha caldeira, onde se quenta a presión constante por unha fonte de calor externa para converterse nun vapor saturado seco. A enerxía de entrada necesaria pódese calcular facilmente gráficamente, usando un gráfico de entalpía-entropía (diagrama h–s ou diagrama de Mollier), ou numericamente, usando táboas de vapor ou software. O proceso 2-3 é a adición de calor a presión constante na caldeira.
+Proceso 3-4: o vapor saturado seco se expande a través dunha turbina, xerando enerxía. Isto diminúe a temperatura e a presión do vapor e pode producirse algunha condensación. A saída deste proceso pódese calcular facilmente usando o gráfico ou as táboas indicadas anteriormente. O proceso 3-4 é a expansión isentrópica.
+Proceso 4-1: o vapor húmido entra entón nun condensador, onde se condensa a presión constante para converterse nun líquido saturado. O proceso 4-1 é o rechazo de calor a presión constante no condensador.
+Nun ciclo de Rankine ideal, a bomba e a turbina serían isentrópicas, é dicir, a bomba e a turbina non xerarían entropía e, polo tanto, maximizarían a produción neta de traballo. Os procesos 1–2 e 3–4 estarían representados por liñas verticais no diagrama T–s e semellan máis ao do ciclo de Carnot. O ciclo de Rankine que se mostra aquí evita que o estado do fluído de traballo acabe na rexión do vapor sobrequentado despois da expansión na turbina, [1] o que reduce a enerxía eliminada polos condensadores.
+
+
+
+
+Existen catro procesos nun **ciclo Rankine**, cada un alterando as propiedades do fluído de traballo. Estas propiedades son identificadas por números no diagrama.
+
+* **Proceso 1-2**, **compresión isoentrópica**: Primeiro, o fluído é bombeado (idealmente de forma isoentrópica) dunha presión baixa a unha presión alta utilizándose unha bomba. O bombeamento require subministración de enerxía.
+* **Proceso 2-3**, **adición isobárica de calor**: o fluído presurizado entra nunha caldeira, onde é quentado a presión constante até se tornar vapor sobrequentado. Fontes comúns de calor inclúen carbón, gas natural e enerxía nuclear.
+* **Proceso 3-4**, **expansión isoentróica**: o vapor sobrequentado expándese a través dunha turbina para xerar traballo. Idealmente, esta expansión é isoentrópica. Con esta expansión, tanto a presión como a temperatura se reducen.
+* **Proceso 4-1**. **elimonación isobárica de calor**: o vapor entra nun condensador, onde é arrefriado até a condición de líquido saturado. Este líquido retorna á bomba e o ciclo repítese.
+
+Neste ciclo, o traballo obtense en da turbina e consúmese na bomba. Ademais, se subministra cakir na caldeira e se elimina no condensador.
+
+O ciclo de potencia do vapor real difire do ciclo ideal de Rankine debido ás irreversibilidades dos compoñentes inherentes causadas pola fricción do fluído e a perda de calor ao ambiente; a fricción do fluído provoca caídas de presión na caldeira, no condensador e na canalización entre os compoñentes e, como resultado, o vapor sae da caldeira a menor presión; A perda de calor reduce a produción neta de traballo, polo que é necesaria a adición de calor ao vapor na caldeira para manter o mesmo nivel de produción neta de traballo.
+
+Con esta información, podemos atopar o traballo neto, a eficiencia e a relación de potencia de retorno do ciclo.
+
+## Ecuacións
+
+Cada unha das ecuacións seguintes pódense obter facilmente a partires do balance de masa e enerxía do volume de control. A quinta ecuación define a eficiencia termodinámica do ciclo como a razón entre o traballo obtido do sistema e a calor fornecida ao sistema.
+
+$$
+\frac { \dot{Q}_{caldeira} } { \dot{m} } = h_2 - h_1
+$$
+
+$$
+\frac { \dot{W}_{turbina} } { \dot{m} } = h_2 - h_3
+$$
+
+$$
+\frac { \dot{Q}_{condensador} } { \dot{m} } = h_4 - h_3
+$$
+
+$$
+\frac { \dot{W}_{bomba} } { \dot{m} } = h_4 - h_1
+$$
+
+Rendemento:
+
+$$
+\eta = \frac { \dot{W}_{turbina} - \dot{W}_{bomba} } { \dot{Q}_{caldeira} }
+$$
+
+onde:
+
+$\dot{Q}_{entra}$ é a taxa de entrada de calor (enerxía por unidade de tempo)  
+$\dot{m}$ o caudal másico (masa por unidade de tempo)  
+$\dot{W}$ o traballo mecánico usado ou proveniente do sistema (enerxía por unidade de tempo)  
+$\eta$ a eficiencia termodinámica do proceso (adimensional), e  
+$h_1,h_2,h_3,h_4,$ son os valores de entalpía específica especificados no diagrama **T-S**
+
+A eficiencia enerxética do ciclo defínese como:
+
+$$
+\texttt{eficiencia} = \frac { W_{neto} } { Q_{subministrado} } \times 100
+$$
+
+do mesmo xeito:
+
+$$
+\texttt{relacion de potencia de retorno} = \frac { W_{turbina} } { W_{bomba} } 
+$$
+
+<center><small>Ciclo de Rankine ideal.</small></center>
+
+## Enunciado
+
+Determinr a eficiencia e a tasa de retorno de potencia para o ciclo Rankine ideal da figura, que usa vapor de auga como fluido de traballo e no que a presión do condensador é de 10 kPa, e a da caldeira 2 Mpa. O vapor de auga abandona a caldeira en forma de vapor saturado. Determinar tammén o traballo da bomba por quilogramo de fluido ($W_p$) e a calor eliminada por quilogramo de fluido no condensador, $q_1$.   
+
+
+
+```{python}
+import numpy as np
+import pyromat as pm
+```
+
+Podemos ollar o ficheiro de configuración usando:
+
+```{python}
+pm.config
+```
+
+O fluido é auga:
+
+```{python}
+auga = pm.get("mp.H2O")
+```
+Cambiamos as unidades de presión a kPa:
+
+```{python}
+pm.config['unit_pressure'] = 'kPa'
+```
+
+Para resolver o problema consideramos unha superficie de control arredor da bomba, a caldeira, a turbina e o condensador.
+
+### Bomba (traballo)
+
+O líquido está saturado, logo x = 0.
+
+```{python}
+# líquido saturado, x = 0
+p1 = 10  # kPa 
+p2 = 2000 # kPa
+v = 1 / auga.ds(p=p1)[0]  # 0 é porque x = 0
+w_p = v * ( p2 - p1 )
+print("O traballo que entrega á bomba é de {:4.2f} kJ/kg".format(w_p[0]))
+# print(f"O traballo que entrega á bomba é de {round(float(w_p),2)} kJ/kg")
+```
+
+```{python}
+h1 = auga.hs(p=p1)[0]
+h2 = h1 + w_p[0]
+print("h2 = {:4.2f} kJ/kg".format(h2[0]))
+print(f"h2 = {round(float(h2[0])):4.2f} kJ/kg")
+```
+
+### Caldeira (calor)
+O vapor abandona a caldeira en forma de vapor saturado. Logo x = 1.
+
+```{python}
+p3 = p2
+h3 = auga.hs(p=p3)[1]  # 1 porque x = 1
+q_H = h3 - h2
+print("A calor necesaria na caldeira é de {:4.2f} kJ/kg".format(q_H[0]))
+# print(f"A calor necesaria na caldeira é de {round(float(q_H),2)} kJ/kg")
+```
+
+## Turbina (traballo)
+
+```{python}
+p4 = p1
+s3 = auga.ss(p=p3)[1]  # 1 porque x = 1
+s4 = s3
+x = auga.T_s(s=s4,p=p4,quality=True)[1]  # 1 porque x = 1
+h4 = auga.h(p=p4,x=x)
+w_t = h3 - h4
+print("O traballo xerado pola turbina é de {:4.2f} kJ/kg".format(w_t[0]))
+# print(f"O traballo xerado pola turbina é de {round(float(w_t),2)} kJ/kg")
+```
+
+### Condensador (calor)
+
+```{python}
+q_L = h4 - h1
+print("A calor recuperada no condensador é de {:4.2f} kJ/kg".format(q_L[0]))
+# print(f"A calor recuperada no condensador é de {round(float(q_L),2)} kJ/kg")
+```
+
+### Eficiencia
+
+A calculamos como:
+  
+$$
+\eta_{ciclo} = \frac { W_{neto} } { q_H } 
+$$
+
+```{python}
+eficiencia_ciclo = ( w_t[0] - w_p[0]  ) / q_H[0] * 100
+# print("A eficiencia térmica do ciclo é do {:4.2f}%".format(eficiencia_ciclo[0]))
+print(f"A eficiencia térmica do ciclo é do {round(float(eficiencia_ciclo),2)}%")
+```
+
