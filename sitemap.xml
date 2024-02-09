@@ -2,18 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://anxosanchez.github.io/pyciclos/posts/welcome/index.html</loc>
-    <lastmod>2024-02-09T16:18:24.699Z</lastmod>
+    <lastmod>2024-02-09T20:50:23.186Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/posts/20240208/index.html</loc>
+    <lastmod>2024-02-09T20:50:22.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/ipynb/rankine-ideal-iapws.html</loc>
+    <lastmod>2024-02-09T20:50:19.612Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/ipynb/Diagramas Pxy-Txy-xy.html</loc>
+    <lastmod>2024-02-09T20:50:18.552Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/ipynb/ciclo-rankine-real.html</loc>
+    <lastmod>2024-02-09T20:50:17.715Z</lastmod>
   </url>
   <url>
     <loc>https://anxosanchez.github.io/pyciclos/index.html</loc>
-    <lastmod>2024-02-09T16:18:23.971Z</lastmod>
+    <lastmod>2024-02-09T20:50:16.697Z</lastmod>
   </url>
   <url>
     <loc>https://anxosanchez.github.io/pyciclos/about.html</loc>
-    <lastmod>2024-02-09T16:18:23.387Z</lastmod>
+    <lastmod>2024-02-09T20:50:16.127Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/ipynb/ciclo-rankine-ideal-pyromat.html</loc>
+    <lastmod>2024-02-09T20:50:17.338Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/ipynb/ColpProp.html</loc>
+    <lastmod>2024-02-09T20:50:18.114Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/ipynb/Intro_thermo.html</loc>
+    <lastmod>2024-02-09T20:50:18.971Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anxosanchez.github.io/pyciclos/ipynb/refrigeration-cycle-pyromat.html</loc>
+    <lastmod>2024-02-09T20:50:20.508Z</lastmod>
   </url>
   <url>
     <loc>https://anxosanchez.github.io/pyciclos/posts/post-with-code/index.html</loc>
-    <lastmod>2024-02-09T16:18:24.318Z</lastmod>
+    <lastmod>2024-02-09T20:50:22.828Z</lastmod>
   </url>
 </urlset>
