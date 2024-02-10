@@ -206,7 +206,7 @@ window.Quarto = {
 <p>O <a href="https://gl.wikipedia.org/wiki/Ciclo_de_Rankine">ciclo Rankine</a> é un ciclo termodinámico. Serve de modelo para a obtención de traballo nunha turbina de vapor. Debe o seu nome ó matemático escocés <a href="https://gl.wikipedia.org/wiki/William_John_Macquorn_Rankine">William John Macquorn Rankine</a>.</p>
 <p>O <strong>ciclo Rankine</strong> é un ciclo enerxético de vapor que se usa nas centrais térmicas. É semellante ao <a href="https://gl.wikipedia.org/wiki/Ciclo_de_Carnot">ciclo de Carnot</a>. O seu uso é máis popular porque é moito máis práctico que o <strong>ciclo de Carnot</strong>, con boas taxas de eficiencia. Tamén ten deseños que melloran a eficiencia de moitos xeitos, como a <strong>rexeración</strong> e o <strong>requecemento</strong>. Isto fai que o <strong>ciclo de Rankine</strong> sexa un ciclo ideal para as turbinas de vapor.</p>
 <center>
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Rankine_cycle_Ts.png" alt="drawing" style="width:400px;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Rankine_cycle_Ts.png" alt="drawing" style="width:800px;">
 </center>
 <center>
 <small>Diagrama T-S exhibindo do proceso real e do ideal.</small>
@@ -267,17 +267,17 @@ window.Quarto = {
 <section id="enunciado" class="level2">
 <h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
 <p>Determinr a eficiencia e a tasa de retorno de potencia para o ciclo Rankine ideal da figura, que usa vapor de auga como fluido de traballo e no que a presión do condensador é de 10 kPa, e a da caldeira 2 Mpa. O vapor de auga abandona a caldeira en forma de vapor saturado. Determinar tammén o traballo da bomba por quilogramo de fluido (<span class="math inline">\(W_p\)</span>) e a calor eliminada por quilogramo de fluido no condensador, <span class="math inline">\(q_1\)</span>.</p>
-<div class="cell" data-execution_count="1">
+<div id="c720759c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyromat <span class="im">as</span> pm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos ollar o ficheiro de configuración usando:</p>
-<div class="cell" data-execution_count="2">
+<div id="613cf6b5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pm.config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>     config_file : ['C:\\Users\\anxos\\AppData\\Local\\Programs\\Pyth...
+<pre><code>     config_file : ['C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\...
   config_verbose : False
-         dat_dir : ['C:\\Users\\anxos\\AppData\\Local\\Programs\\Pyth...
+         dat_dir : ['C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\...
  dat_exist_fatal : False
    dat_overwrite : True
    dat_recursive : True
@@ -286,8 +286,8 @@ window.Quarto = {
          def_oob : nan
            def_p : 1.01325
    error_verbose : True
-     install_dir : 'C:\\Users\\anxos\\AppData\\Local\\Programs\\Pytho...
-         reg_dir : ['C:\\Users\\anxos\\AppData\\Local\\Programs\\Pyth...
+     install_dir : 'C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\....
+         reg_dir : ['C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\...
  reg_exist_fatal : False
    reg_overwrite : True
      reg_verbose : False
@@ -306,18 +306,18 @@ unit_temperature : 'K'
 </div>
 </div>
 <p>O fluido é auga:</p>
-<div class="cell" data-execution_count="3">
+<div id="6996b795" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>auga <span class="op">=</span> pm.get(<span class="st">"mp.H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Cambiamos as unidades de presión a kPa:</p>
-<div class="cell" data-execution_count="4">
+<div id="3cf47fbf" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pm.config[<span class="st">'unit_pressure'</span>] <span class="op">=</span> <span class="st">'kPa'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para resolver o problema consideramos unha superficie de control arredor da bomba, a caldeira, a turbina e o condensador.</p>
 <section id="bomba-traballo" class="level3">
 <h3 class="anchored" data-anchor-id="bomba-traballo">Bomba (traballo)</h3>
 <p>O líquido está saturado, logo x = 0.</p>
-<div class="cell" data-execution_count="5">
+<div id="f6e233eb" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># líquido saturado, x = 0</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> <span class="dv">10</span>  <span class="co"># kPa </span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> <span class="dv">2000</span> <span class="co"># kPa</span></span>
@@ -329,7 +329,7 @@ unit_temperature : 'K'
 <pre><code>O traballo que entrega á bomba é de 2.01 kJ/kg</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="9031aa09" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> auga.hs(p<span class="op">=</span>p1)[<span class="dv">0</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> h1 <span class="op">+</span> w_p[<span class="dv">0</span>]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"h2 = </span><span class="sc">{:4.2f}</span><span class="st"> kJ/kg"</span>.<span class="bu">format</span>(h2[<span class="dv">0</span>]))</span>
@@ -343,7 +343,7 @@ h2 = 194.00 kJ/kg</code></pre>
 <section id="caldeira-calor" class="level3">
 <h3 class="anchored" data-anchor-id="caldeira-calor">Caldeira (calor)</h3>
 <p>O vapor abandona a caldeira en forma de vapor saturado. Logo x = 1.</p>
-<div class="cell" data-execution_count="7">
+<div id="851f0487" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">=</span> p2</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>h3 <span class="op">=</span> auga.hs(p<span class="op">=</span>p3)[<span class="dv">1</span>]  <span class="co"># 1 porque x = 1</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>q_H <span class="op">=</span> h3 <span class="op">-</span> h2</span>
@@ -357,7 +357,7 @@ h2 = 194.00 kJ/kg</code></pre>
 </section>
 <section id="turbina-traballo" class="level2">
 <h2 class="anchored" data-anchor-id="turbina-traballo">Turbina (traballo)</h2>
-<div class="cell" data-execution_count="8">
+<div id="f6538e3c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">=</span> p1</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> auga.ss(p<span class="op">=</span>p3)[<span class="dv">1</span>]  <span class="co"># 1 porque x = 1</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>s4 <span class="op">=</span> s3</span>
@@ -372,7 +372,7 @@ h2 = 194.00 kJ/kg</code></pre>
 </div>
 <section id="condensador-calor" class="level3">
 <h3 class="anchored" data-anchor-id="condensador-calor">Condensador (calor)</h3>
-<div class="cell" data-execution_count="9">
+<div id="e0401fbb" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>q_L <span class="op">=</span> h4 <span class="op">-</span> h1</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A calor recuperada no condensador é de </span><span class="sc">{:4.2f}</span><span class="st"> kJ/kg"</span>.<span class="bu">format</span>(q_L[<span class="dv">0</span>]))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"A calor recuperada no condensador é de {round(float(q_L),2)} kJ/kg")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -387,7 +387,7 @@ h2 = 194.00 kJ/kg</code></pre>
 <p><span class="math display">\[
 \eta_{ciclo} = \frac { W_{neto} } { q_H }
 \]</span></p>
-<div class="cell" data-execution_count="10">
+<div id="59baae16" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>eficiencia_ciclo <span class="op">=</span> ( w_t[<span class="dv">0</span>] <span class="op">-</span> w_p[<span class="dv">0</span>]  ) <span class="op">/</span> q_H[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print("A eficiencia térmica do ciclo é do {:4.2f}%".format(eficiencia_ciclo[0]))</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"A eficiencia térmica do ciclo é do </span><span class="sc">{</span><span class="bu">round</span>(<span class="bu">float</span>(eficiencia_ciclo),<span class="dv">2</span>)<span class="sc">}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

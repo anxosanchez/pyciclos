@@ -13,30 +13,18 @@ O [ciclo Rankine](https://gl.wikipedia.org/wiki/Ciclo_de_Rankine) é un ciclo te
 
 O **ciclo Rankine** é un ciclo enerxético de vapor que se usa nas centrais térmicas. É semellante ao [ciclo de Carnot](https://gl.wikipedia.org/wiki/Ciclo_de_Carnot). O seu uso é máis popular porque é moito máis práctico que o **ciclo de Carnot**, con boas taxas de eficiencia. Tamén ten deseños que melloran a eficiencia de moitos xeitos, como a **rexeración** e o **requecemento**. Isto fai que o **ciclo de Rankine** sexa un ciclo ideal para as turbinas de vapor.
 
-<center><img src= "https://upload.wikimedia.org/wikipedia/commons/b/be/Rankine_cycle_Ts.png" alt="drawing" style="width:400px;"/></center>
-
-<center><small>Diagrama T-S exhibindo do proceso real e do ideal.</small></center>
+<center><img src= "https://upload.wikimedia.org/wikipedia/commons/b/be/Rankine_cycle_Ts.png" alt="drawing" style="width:800px;"/></center>
   
-    
 ## Procesos dun ciclo Rankine
 
-Hai catro procesos no ciclo Rankine. Os estados identifícanse mediante números (en marrón) no diagrama T–s.
-
-**Proceso 1-2: o fluído de traballo é bombeado de baixa a alta presión. Como o fluído é un líquido nesta fase, a bomba require pouca enerxía de entrada. O proceso 1-2 é a compresión isentrópica.
-Proceso 2-3: o líquido de alta presión entra nunha caldeira, onde se quenta a presión constante por unha fonte de calor externa para converterse nun vapor saturado seco. A enerxía de entrada necesaria pódese calcular facilmente gráficamente, usando un gráfico de entalpía-entropía (diagrama h–s ou diagrama de Mollier), ou numericamente, usando táboas de vapor ou software. O proceso 2-3 é a adición de calor a presión constante na caldeira.
-Proceso 3-4: o vapor saturado seco se expande a través dunha turbina, xerando enerxía. Isto diminúe a temperatura e a presión do vapor e pode producirse algunha condensación. A saída deste proceso pódese calcular facilmente usando o gráfico ou as táboas indicadas anteriormente. O proceso 3-4 é a expansión isentrópica.
-Proceso 4-1: o vapor húmido entra entón nun condensador, onde se condensa a presión constante para converterse nun líquido saturado. O proceso 4-1 é o rechazo de calor a presión constante no condensador.
-Nun ciclo de Rankine ideal, a bomba e a turbina serían isentrópicas, é dicir, a bomba e a turbina non xerarían entropía e, polo tanto, maximizarían a produción neta de traballo. Os procesos 1–2 e 3–4 estarían representados por liñas verticais no diagrama T–s e semellan máis ao do ciclo de Carnot. O ciclo de Rankine que se mostra aquí evita que o estado do fluído de traballo acabe na rexión do vapor sobrequentado despois da expansión na turbina, [1] o que reduce a enerxía eliminada polos condensadores.
-
-
-
+Hai catro procesos (etapas) no ciclo Rankine. Os estados identifícanse mediante números (en marrón) no diagrama T–s.
 
 Existen catro procesos nun **ciclo Rankine**, cada un alterando as propiedades do fluído de traballo. Estas propiedades son identificadas por números no diagrama.
 
-* **Proceso 1-2**, **compresión isoentrópica**: Primeiro, o fluído é bombeado (idealmente de forma isoentrópica) dunha presión baixa a unha presión alta utilizándose unha bomba. O bombeamento require subministración de enerxía.
-* **Proceso 2-3**, **adición isobárica de calor**: o fluído presurizado entra nunha caldeira, onde é quentado a presión constante até se tornar vapor sobrequentado. Fontes comúns de calor inclúen carbón, gas natural e enerxía nuclear.
-* **Proceso 3-4**, **expansión isoentróica**: o vapor sobrequentado expándese a través dunha turbina para xerar traballo. Idealmente, esta expansión é isoentrópica. Con esta expansión, tanto a presión como a temperatura se reducen.
-* **Proceso 4-1**. **elimonación isobárica de calor**: o vapor entra nun condensador, onde é arrefriado até a condición de líquido saturado. Este líquido retorna á bomba e o ciclo repítese.
+**Proceso 1-2**, **compresión isoentrópica**: Primeiro, o fluído é bombeado (idealmente de forma isoentrópica) dunha presión baixa a unha presión alta utilizándose unha bomba. O bombeamento require subministración de enerxía.
+**Proceso 2-3**, **adición isobárica de calor**: o fluído presurizado entra nunha caldeira, onde é quentado a presión constante até se tornar vapor sobrequentado. Fontes comúns de calor inclúen carbón, gas natural e enerxía nuclear.
+**Proceso 3-4**, **expansión isoentróica**: o vapor sobrequentado expándese a través dunha turbina para xerar traballo. Idealmente, esta expansión é isoentrópica. Con esta expansión, tanto a presión como a temperatura se reducen.
+**Proceso 4-1**. **elimonación isobárica de calor**: o vapor húmido entra nun condensador, onde é arrefriado até líquido saturado (condensado). Este líquido retorna á bomba e o ciclo se repite.
 
 Neste ciclo, o traballo obtense en da turbina e consúmese na bomba. Ademais, se subministra cakir na caldeira e se elimina no condensador.
 
@@ -90,26 +78,26 @@ $$
 \texttt{relacion de potencia de retorno} = \frac { W_{turbina} } { W_{bomba} } 
 $$
 
-<center><small>Ciclo de Rankine ideal.</small></center>
+<center><small>Figura 1. Ciclo de Rankine ideal.</small></center>
 
 ## Enunciado
 
-Determinr a eficiencia e a tasa de retorno de potencia para o ciclo Rankine ideal da figura, que usa vapor de auga como fluido de traballo e no que a presión do condensador é de 10 kPa, e a da caldeira 2 Mpa. O vapor de auga abandona a caldeira en forma de vapor saturado. Determinar tammén o traballo da bomba por quilogramo de fluido ($W_p$) e a calor eliminada por quilogramo de fluido no condensador, $q_1$.   
+Determinar a eficiencia e a tasa de retorno de potencia para o ciclo Rankine ideal da figura 1, que usa vapor de auga como fluido de traballo e no que a presión do condensador é de 10 kPa, e a da caldeira 2 Mpa. O vapor de auga abandona a caldeira en forma de vapor saturado. Determinar tammén o traballo da bomba por quilogramo de fluido ($W_p$) e a calor eliminada por quilogramo de fluido no condensador, $q_1$.   
 
-
+En primeiro lugar cargamos as ibrarías python necesarias, ```numpy``` e ```pyromat```.
 
 ```{python}
 import numpy as np
 import pyromat as pm
 ```
 
-Podemos ollar o ficheiro de configuración usando:
+Podemos ollar o ficheiro de configuración de ```pyromat``` usando:
 
 ```{python}
 pm.config
 ```
 
-O fluido é auga:
+O fluido é auga polo que debemos atopalo na base de datos e cargar retraer os seu datos:
 
 ```{python}
 auga = pm.get("mp.H2O")
