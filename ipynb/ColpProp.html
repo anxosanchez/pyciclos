@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>./pyciclos – colpprop</title>
+<title>./pyciclos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -102,9 +109,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">./pyciclos</span>
     </a>
@@ -116,23 +123,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -146,54 +153,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:239,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696509920883,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="25">
+
+<div id="cell-0" class="cell" data-executioninfo="{&quot;elapsed&quot;:239,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696509920883,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> CoolProp.CoolProp <span class="im">as</span> ct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:241,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696509937125,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="26">
+<div id="cell-1" class="cell" data-executioninfo="{&quot;elapsed&quot;:241,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696509937125,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fluido <span class="op">=</span> <span class="st">'propane'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:288,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510757186,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="27">
+<div id="cell-2" class="cell" data-executioninfo="{&quot;elapsed&quot;:288,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510757186,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># m_dot = 300 # Tm/h</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m_dot <span class="op">=</span> <span class="dv">300</span> <span class="op">*</span> <span class="fl">1e3</span> <span class="op">/</span> <span class="dv">3600</span> <span class="co"># kg/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:221,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510515366,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="28">
+<div id="cell-3" class="cell" data-executioninfo="{&quot;elapsed&quot;:221,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510515366,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p1 = 100 # bar</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> <span class="fl">1e5</span> <span class="co"># Pa</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:232,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510544598,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="29">
+<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:232,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510544598,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># T1 = 540 # ºC1 =</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>T1 <span class="op">=</span> <span class="dv">540</span> <span class="op">+</span> <span class="fl">273.15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:222,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510565532,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="30">
+<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:222,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510565532,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p2 = 20 # bar</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="fl">1e5</span> <span class="co"># Pa</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:234,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510598341,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="31">
+<div id="cell-6" class="cell" data-executioninfo="{&quot;elapsed&quot;:234,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510598341,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># T2 = 320 # ºC</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>T2 <span class="op">=</span> <span class="dv">320</span> <span class="op">+</span> <span class="fl">273.15</span> <span class="co"># K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510935135,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="32">
+<div id="cell-7" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510935135,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> ct.PropsSI(<span class="st">'H'</span>,<span class="st">'P'</span>,p1,<span class="st">'T'</span>,T1,fluido)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510950834,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="33">
+<div id="cell-8" class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510950834,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> ct.PropsSI(<span class="st">'H'</span>,<span class="st">'P'</span>,p2,<span class="st">'T'</span>,T2,fluido)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:237,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510910914,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="6f932b50-1bd6-40a4-be8c-dd8cd2cd5d58" data-execution_count="34">
+<div id="cell-9" class="cell" data-executioninfo="{&quot;elapsed&quot;:237,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696510910914,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="6f932b50-1bd6-40a4-be8c-dd8cd2cd5d58" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Entalpía en 1 </span><span class="sc">{</span>h1<span class="sc">:.1f}</span><span class="ss"> J/kg.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Entalpía en 1 1988106.3 J/kg.</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:235,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696511001393,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="a140c6a6-2aad-43c9-8679-5f9baf1049a3" data-execution_count="35">
+<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:235,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696511001393,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="a140c6a6-2aad-43c9-8679-5f9baf1049a3" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Entalpía en 1 </span><span class="sc">{</span>h2<span class="sc">:.1f}</span><span class="ss"> J/kg.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Entalpía en 1 1298442.8 J/kg.</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696511104332,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="36">
+<div id="cell-11" class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696511104332,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Wcompresion <span class="op">=</span> m_dot <span class="op">*</span> (h1<span class="op">-</span>h2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:353,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696511111085,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="0c6d00a5-e549-4cbf-b272-2ecb197535fa" data-execution_count="37">
+<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:353,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696511111085,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="0c6d00a5-e549-4cbf-b272-2ecb197535fa" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Traballo de compresión: </span><span class="sc">{</span>Wcompresion <span class="op">/</span> <span class="fl">1e6</span><span class="sc">:.0f}</span><span class="ss"> J/kg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Traballo de compresión: 57 J/kg</code></pre>
@@ -201,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Unha bomba de calor que utiliza o refrixerante R-22 funciona cun caudal másico de 100 kg/h. O fluído entra no compresor a T1 = 300 K e P1 = 1 bar. Despreciase a a perda de calor do compresor. A presión de saída do compresor é de 5 bar. Se a eficiencia isentrópica do compresor é de 0,7 e a mecánica de 0,9, cal é a potencia absorbida do compresor e como é o refrixerante cando sae do compresor?</p>
 <p>O libro de texto usa o Peng-Robinson EOS, así que para comparar, utilízao tamén.</p>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:291,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696513098414,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="38">
+<div id="cell-14" class="cell" data-executioninfo="{&quot;elapsed&quot;:291,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696513098414,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estblecemos condicións e imports</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.constants <span class="im">import</span> bar, hour</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> thermo <span class="im">import</span> ChemicalConstantsPackage, PRMIX, CEOSLiquid, CEOSGas, FlashPureVLS</span>
@@ -216,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>eta_isentropica <span class="op">=</span> <span class="fl">0.7</span></span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>eta_mecanica <span class="op">=</span> <span class="fl">0.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:228,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696512337396,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="39">
+<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:228,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696512337396,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usamos os modelos de Peng-Robinson publicados orixinalmente (sen modificar)</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>eos_kwargs <span class="op">=</span> <span class="bu">dict</span>(Tcs<span class="op">=</span>constants.Tcs, Pcs<span class="op">=</span>constants.Pcs, omegas<span class="op">=</span>constants.omegas)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>liquid <span class="op">=</span> CEOSLiquid(PRMIX, HeatCapacityGases<span class="op">=</span>correlations.HeatCapacityGases, eos_kwargs<span class="op">=</span>eos_kwargs)</span>
@@ -226,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>NameError: name 'constants' is not defined</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1034,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696512920312,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="6ca046ab-0217-4df0-b354-89d7da06bece">
+<div id="cell-16" class="cell" data-executioninfo="{&quot;elapsed&quot;:1034,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696512920312,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="6ca046ab-0217-4df0-b354-89d7da06bece">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flash ás condicións de entrada para obter enthalpñia inicial</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>estado_1 <span class="op">=</span> flasher.flash(T<span class="op">=</span>T1, P<span class="op">=</span>P1)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # Flash ás condicións de saída para obter enthalpía final. A entropía se conserva nos compresores e expansores!</span></span>
@@ -239,10 +247,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>H_engadido_o_fluido_real <span class="op">=</span> delta_H_ideal<span class="op">/</span>eta_isentropica</span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Calor engadido ó fluido (real) = </span><span class="sc">{</span>H_engadido_o_fluido_real<span class="sc">:.2f}</span><span class="ss"> J/kg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:449,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696513176678,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}">
+<div id="cell-17" class="cell" data-executioninfo="{&quot;elapsed&quot;:449,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696513176678,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>estado_2 <span class="op">=</span> flasher.flash(H<span class="op">=</span>estado_1.H() <span class="op">+</span> H_engadido_o_fluido_real, P<span class="op">=</span>P2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:666,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696513239856,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="8d4440ea-f952-4eed-c100-ba3d4040c970">
+<div id="cell-18" class="cell" data-executioninfo="{&quot;elapsed&quot;:666,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696513239856,&quot;user&quot;:{&quot;displayName&quot;:&quot;Anxo Sanchez&quot;,&quot;userId&quot;:&quot;02509210005225030042&quot;},&quot;user_tz&quot;:-120}" data-outputid="8d4440ea-f952-4eed-c100-ba3d4040c970">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To calculafr a potencia real, é mais convinnte usar a enthalpía másica</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>potencia_real_por_kg <span class="op">=</span> (estado_2.H_mass() <span class="op">-</span> estado_1.H_mass())<span class="op">/</span>(eta_mecanica) <span class="co"># W/kg</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>potencia_real <span class="op">=</span> potencia_real_por_kg <span class="op">*</span> <span class="dv">100</span> <span class="op">/</span> hour</span>
@@ -332,10 +340,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -345,8 +352,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -359,6 +375,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -402,6 +537,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -427,6 +563,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -487,6 +649,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

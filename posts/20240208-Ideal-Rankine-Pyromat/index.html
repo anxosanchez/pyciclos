@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -97,16 +104,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">./pyciclos</span>
     </a>
@@ -118,23 +152,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -165,13 +199,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <p>Escribir un programa, simular o <strong>ciclo Rankine</strong> calculando e trazando os puntos correspondentes aos puntos do estado e unindo a fenda entre eles, e identificalos como procesos tanto no gráfico <strong>T-S</strong> como no <strong>H-S</strong>, xunto co cálculo do traballo neto e a relación de potencia de retorno.</p>
 <section id="introdución" class="level2">
 <h2 class="anchored" data-anchor-id="introdución">Introdución</h2>
 <p>O <a href="https://gl.wikipedia.org/wiki/Ciclo_de_Rankine">ciclo Rankine</a> é un ciclo termodinámico. Serve de modelo para a obtención de traballo nunha turbina de vapor. Debe o seu nome ó matemático escocés <a href="https://gl.wikipedia.org/wiki/William_John_Macquorn_Rankine">William John Macquorn Rankine</a>.</p>
 <p>O <strong>ciclo Rankine</strong> é un ciclo enerxético de vapor que se usa nas centrais térmicas. É semellante ao <a href="https://gl.wikipedia.org/wiki/Ciclo_de_Carnot">ciclo de Carnot</a>. O seu uso é máis popular porque é moito máis práctico que o <strong>ciclo de Carnot</strong>, con boas taxas de eficiencia. Tamén ten deseños que melloran a eficiencia de moitos xeitos, como a <strong>rexeración</strong> e o <strong>requecemento</strong>. Isto fai que o <strong>ciclo de Rankine</strong> sexa un ciclo ideal para as turbinas de vapor.</p>
 <center>
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Rankine_cycle_Ts.png" alt="drawing" style="width:400px;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Rankine_cycle_Ts.png" alt="drawing" style="width:800px;">
 </center>
 <center>
 <small>Diagrama T-S exhibindo do proceso real e do ideal.</small>
@@ -232,17 +267,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="enunciado" class="level2">
 <h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
 <p>Determinr a eficiencia e a tasa de retorno de potencia para o ciclo Rankine ideal da figura, que usa vapor de auga como fluido de traballo e no que a presión do condensador é de 10 kPa, e a da caldeira 2 Mpa. O vapor de auga abandona a caldeira en forma de vapor saturado. Determinar tammén o traballo da bomba por quilogramo de fluido (<span class="math inline">\(W_p\)</span>) e a calor eliminada por quilogramo de fluido no condensador, <span class="math inline">\(q_1\)</span>.</p>
-<div class="cell" data-execution_count="1">
+<div id="c720759c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyromat <span class="im">as</span> pm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos ollar o ficheiro de configuración usando:</p>
-<div class="cell" data-execution_count="2">
+<div id="613cf6b5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pm.config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>     config_file : ['C:\\Users\\anxos\\AppData\\Local\\Programs\\Pyth...
+<pre><code>     config_file : ['C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\...
   config_verbose : False
-         dat_dir : ['C:\\Users\\anxos\\AppData\\Local\\Programs\\Pyth...
+         dat_dir : ['C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\...
  dat_exist_fatal : False
    dat_overwrite : True
    dat_recursive : True
@@ -251,8 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
          def_oob : nan
            def_p : 1.01325
    error_verbose : True
-     install_dir : 'C:\\Users\\anxos\\AppData\\Local\\Programs\\Pytho...
-         reg_dir : ['C:\\Users\\anxos\\AppData\\Local\\Programs\\Pyth...
+     install_dir : 'C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\....
+         reg_dir : ['C:\\Users\\anxos\\Documents\\Github\\SOPQ-2324\\...
  reg_exist_fatal : False
    reg_overwrite : True
      reg_verbose : False
@@ -271,18 +306,18 @@ unit_temperature : 'K'
 </div>
 </div>
 <p>O fluido é auga:</p>
-<div class="cell" data-execution_count="3">
+<div id="6996b795" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>auga <span class="op">=</span> pm.get(<span class="st">"mp.H2O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Cambiamos as unidades de presión a kPa:</p>
-<div class="cell" data-execution_count="4">
+<div id="3cf47fbf" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pm.config[<span class="st">'unit_pressure'</span>] <span class="op">=</span> <span class="st">'kPa'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para resolver o problema consideramos unha superficie de control arredor da bomba, a caldeira, a turbina e o condensador.</p>
 <section id="bomba-traballo" class="level3">
 <h3 class="anchored" data-anchor-id="bomba-traballo">Bomba (traballo)</h3>
 <p>O líquido está saturado, logo x = 0.</p>
-<div class="cell" data-execution_count="5">
+<div id="f6e233eb" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># líquido saturado, x = 0</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> <span class="dv">10</span>  <span class="co"># kPa </span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> <span class="dv">2000</span> <span class="co"># kPa</span></span>
@@ -294,7 +329,7 @@ unit_temperature : 'K'
 <pre><code>O traballo que entrega á bomba é de 2.01 kJ/kg</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="9031aa09" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> auga.hs(p<span class="op">=</span>p1)[<span class="dv">0</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> h1 <span class="op">+</span> w_p[<span class="dv">0</span>]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"h2 = </span><span class="sc">{:4.2f}</span><span class="st"> kJ/kg"</span>.<span class="bu">format</span>(h2[<span class="dv">0</span>]))</span>
@@ -308,7 +343,7 @@ h2 = 194.00 kJ/kg</code></pre>
 <section id="caldeira-calor" class="level3">
 <h3 class="anchored" data-anchor-id="caldeira-calor">Caldeira (calor)</h3>
 <p>O vapor abandona a caldeira en forma de vapor saturado. Logo x = 1.</p>
-<div class="cell" data-execution_count="7">
+<div id="851f0487" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">=</span> p2</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>h3 <span class="op">=</span> auga.hs(p<span class="op">=</span>p3)[<span class="dv">1</span>]  <span class="co"># 1 porque x = 1</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>q_H <span class="op">=</span> h3 <span class="op">-</span> h2</span>
@@ -322,7 +357,7 @@ h2 = 194.00 kJ/kg</code></pre>
 </section>
 <section id="turbina-traballo" class="level2">
 <h2 class="anchored" data-anchor-id="turbina-traballo">Turbina (traballo)</h2>
-<div class="cell" data-execution_count="8">
+<div id="f6538e3c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">=</span> p1</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> auga.ss(p<span class="op">=</span>p3)[<span class="dv">1</span>]  <span class="co"># 1 porque x = 1</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>s4 <span class="op">=</span> s3</span>
@@ -337,7 +372,7 @@ h2 = 194.00 kJ/kg</code></pre>
 </div>
 <section id="condensador-calor" class="level3">
 <h3 class="anchored" data-anchor-id="condensador-calor">Condensador (calor)</h3>
-<div class="cell" data-execution_count="9">
+<div id="e0401fbb" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>q_L <span class="op">=</span> h4 <span class="op">-</span> h1</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A calor recuperada no condensador é de </span><span class="sc">{:4.2f}</span><span class="st"> kJ/kg"</span>.<span class="bu">format</span>(q_L[<span class="dv">0</span>]))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"A calor recuperada no condensador é de {round(float(q_L),2)} kJ/kg")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -352,7 +387,7 @@ h2 = 194.00 kJ/kg</code></pre>
 <p><span class="math display">\[
 \eta_{ciclo} = \frac { W_{neto} } { q_H }
 \]</span></p>
-<div class="cell" data-execution_count="10">
+<div id="59baae16" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>eficiencia_ciclo <span class="op">=</span> ( w_t[<span class="dv">0</span>] <span class="op">-</span> w_p[<span class="dv">0</span>]  ) <span class="op">/</span> q_H[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print("A eficiencia térmica do ciclo é do {:4.2f}%".format(eficiencia_ciclo[0]))</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"A eficiencia térmica do ciclo é do </span><span class="sc">{</span><span class="bu">round</span>(<span class="bu">float</span>(eficiencia_ciclo),<span class="dv">2</span>)<span class="sc">}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -445,10 +480,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -458,8 +492,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -472,6 +515,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -515,6 +677,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -540,6 +703,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -600,6 +789,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
